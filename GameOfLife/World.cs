@@ -5,16 +5,20 @@ namespace LifeSimulators
     class World
     {
         // Laws of the world
-        private const long MaxRuns = 500;
+        private static int MaxEvolutions = 500;
 
         private static void Main(string[] args)
         {
+            if (args.Length == 1)
+            {
+                MaxEvolutions = Convert.ToInt32(args[0]);
+            }
             int Height = Console.WindowHeight - 1;
             int Width = Console.WindowWidth - 1;
             long runs = 0;
             MarkLifeSim mls = new MarkLifeSim(Height, Width);
 
-             while (runs++ < MaxRuns)
+             while (runs++ < MaxEvolutions)
              {
                  mls.PrintAndEvolve();
 
